@@ -1,0 +1,15 @@
+<!--ユーザーの投稿一覧-->
+
+<% @books.each do |book| %>
+<div>
+  <p>image
+    <%= image_tag @user.get_profile_image(100,100) %>
+  </p>
+  
+  <p>name<%= book.user.name %></p>
+  
+  <% if @books.user == current_user %>
+    <%= link_to "Show",book_path(@book) %>
+  <% end %>
+</div>
+<% end %>
