@@ -1,15 +1,20 @@
-<!--ユーザーの投稿一覧-->
+<!--ユーザーの詳細、ユーザーごとのBooks一覧-->
 
-<% @books.each do |book| %>
+<h1>Books</h1>
+
 <div>
-  <p>image
-    <%= image_tag @user.get_profile_image(100,100) %>
-  </p>
-  
-  <p>name<%= book.user.name %></p>
-  
-  <% if @books.user == current_user %>
-    <%= link_to "Show",book_path(@book) %>
-  <% end %>
+  <!--ユーザー画像-->
+  <p><%= image_tag 'no_image.jpg' %></p>
+
+  <!--本の情報-->
+  <% if @user.books.any? %>
+    <% @user.books.each do |book| %>
+      <p>Title
+      <%= link_to book.title, book_path(book.id) %>
+      </p>
+      <p>Opinion<%= book.caption %></p>
+    <% end %>
+    <% else %>
+      <p>No books available</p>
+    <% end %>
 </div>
-<% end %>
