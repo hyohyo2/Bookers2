@@ -12,9 +12,9 @@
    about various books!
  </p>
 
-   <p>Log in</p>
+   <p><%= link_to 'Log in', user_session_path, class: "sign-in" %></p>
 
-   <p>Sign in</p>
+   <p><%= link_to 'Sign up', new_user_registration_path, class: "sign-up" %></p>
 
 
 </main>

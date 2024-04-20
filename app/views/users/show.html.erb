@@ -1,32 +1,5 @@
-<!--ユーザーの情報-->
-<h1>User info</h1>
-
-<table>
-  <tr><!--ユーザー画像-->
-    <%= image_tag @user.get_profile_image(100,100) %>
-  </tr>
-  <tr>
-    <th>name</th>
-    <th><%= @user.name %></th>
-  </tr>
-  <tr>
-    <th>introduction
-    </th>
-    <th></th>
-  </tr>
-</table>
-
-<!--投稿ページ-->
-<h1>New book</h1>
-<%= form_with model: @new_book do |f| %>
- <h4>Title</h4>
- <%= f.text_field :title %>
- <h4>Opinion</h4>
- <%= f.text_area :caption %>
- <%= f.submit 'Create Book' %>
-<% end %>
-
-
+<!--ユーザ・投稿部分テンプレート設定-->
+<%= render 'books/list', new_book: @new_book, user: @user %>
 
 <!--テーブルのレイアウト-->
 
