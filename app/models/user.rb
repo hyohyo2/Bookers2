@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   
-  validates :title, presence: true
-  validates :caption, presence: true
+  # validates :titl, presence: true
+  # validates :caption, presence: true
 
   has_one_attached :profile_image
 
