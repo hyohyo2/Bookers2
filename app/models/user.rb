@@ -5,12 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
-  
-  # validates :titl, presence: true
-  # validates :caption, presence: true
 
   has_one_attached :profile_image
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true, length:{ in: 2..20 }
+  validates :introduction, length: { maximum:200 }
 
   def get_profile_image(width, height)
     unless profile_image.attached?
