@@ -2,26 +2,37 @@
 <!--ユーザ・投稿部分テンプレート設定-->
 <%= render 'list', new_book: @new_book, user: @user %>
 
+<div class="col-md-8 offset-md-1">
+<h2>Book detail</h2>
 
-<h1>Book detail</h1>
 
-<div>
+<table class="table">
   <!--ユーザー画像-->
-
-
-  <%= link_to user_path(@user) do %>
-  <%= image_tag @user.get_profile_image(100,100) %><br>
-  <%= @user.name %>
-  <% end %>
+ <tbody>
+   <tr>
+    <td><%= link_to user_path(@user) do %>
+    <%= image_tag @user.get_profile_image(100,100) %><br>
+    <%= @user.name %>
+    <% end %></td>
   <!--ユーザー名前-->
-  <p></p>
-  <!--投稿タイトル-->
-  <p><%= @book.title %></p>
-  <!--投稿内容-->
-  <p><%= @book.caption %></p>
 
-  <% if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path(@book) %>
-    <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
-  <% end %>
-</div>
+  <!--投稿タイトル-->
+  
+    <td>
+    <%= link_to book_path(@book) do %>
+    <%= @book.title %>
+
+    <% end %>
+    </td>
+  <!--投稿内容-->
+    <td><%= @book.Body %></td>
+
+    <% if @book.user == current_user %>
+    <td>
+
+      <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+    <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？",class: "btn btn-sm btn-danger" %></td>
+    <% end %>
+   </tr>
+ </tbody>
+</table>

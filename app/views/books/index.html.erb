@@ -3,10 +3,10 @@
 <!--ユーザ・投稿部分テンプレート設定-->
 <%= render 'list', new_book: @new_book, user: @user %>
 
-
+<div class="col-md-8 offset-md-1">
 <h1>Books</h1>
 
-<table class="table table-striped">
+<table class="table">
   <thead>
     <tr>
       <th></th>
@@ -28,8 +28,9 @@
     <% end %>
     </td>
 
-    <td> <%= book.caption %></td>
+    <td> <%= book.Body %></td>
     </tr>
   <% end %>
   </tbody>
 <table>
+</div>
