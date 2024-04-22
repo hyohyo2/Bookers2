@@ -1,30 +1,24 @@
 <div class='container '>
   <div class="row">
-   <div class= "col-9  mx-auto">
+    <div class= "col-9  mx-auto">
 
-<h2>Editing Book</h2>
-
-<% if @book.errors.any? %>
- <h4><%= @book.errors.count %>error prohibited this obj from being saved:</h4>
-   <ul>
-     <% @book.errors.full_messages.each do |message| %>
-       <li><%= message %></li>
-     <% end %>
-   </ul>
-<% end %>
-
-<%= form_with model: @book do |f| %>
-
-<label for="inputTitle">Title</label><br>
-<%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:""%><br>
-<label for="inputOpinion">Opinion</label><br>
-<%= f.text_field :Body, autofocus: true, id:"inputBody", placeholder:"" %><br>
-<%= f.submit "Update Book", class: "btn btn-sm btn-success" %><br>
-
-<% end %>
-
-<p><%= link_to "Show", book_path(@book) %>｜<%= link_to "Back", books_path %></p><br>
-
-   </div>
+      <h2>Editing Book</h2>
+      <% if @book.errors.any? %>
+        <h4><%= @book.errors.count %>error prohibited this obj from being saved:</h4>
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+      <%= form_with model: @book do |f| %>
+        <label for="inputTitle">Title</label><br>
+          <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:""%><br>
+        <label for="inputOpinion">Opinion</label><br>
+          <%= f.text_field :body, autofocus: true, id:"inputBody", placeholder:"" %><br>
+          <%= f.submit "Update Book", class: "btn btn-sm btn-success" %><br>
+      <% end %>
+      <p><%= link_to "Show", book_path(@book) %>｜<%= link_to "Back", books_path %></p><br>
+     </div>
   </div>
- </div>
+</div>

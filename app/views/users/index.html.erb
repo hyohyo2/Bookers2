@@ -1,36 +1,98 @@
 <!--ユーザ・投稿部分テンプレート設定-->
-<%= render 'books/list', new_book: @new_book, user: @user %>
-
-<div class="column col-md-8 offset-md-1">
-<h2>Users</h2>
-<!--ユーザー一覧-->
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th> </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-    <!--プロフィール画像-->
-      <td>
-        <%= image_tag user.get_profile_image(100, 100) %>
-      </td>
-  　<!--ユーザー名-->
-      <td>
-        <%= user.name %>
-      </td>
-      <!--showページ(ユーザー)へのリンク-->
-      <td>
-        <%= link_to "Show", user_path(user) %>
-      <td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+   <!--render 'books/list', new_book: @new_book, user: @user %>-->
+<main>
+<div>
+  <%= flash[:notice] %>
 </div>
+<div class="container px-5 px-sm-0">
+  <div>
+    <% if @book.errors.any? %>
+      <h4><%= @book.errors.count %>errors prohibited this obj from being saved:</h4><br>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+    <!--ユーザーの情報-->
+      <h2>User info</h2>
+      <table class="table">
+        <!--ユーザー情報-->
+        <tbody>
+          <tr>
+            <%= image_tag @user.get_profile_image(100,100) %>
+          </tr>
+          <tr>
+            <th>name</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= @user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <a class="btn btn-outline-secondary btn-block" href="/users/<%= @user.id %>/edit">
+          <i class="fa-solid fa-user-gear"></i>
+        </a>
+      </div>
+  <!--投稿ページ-->
+      <h2 class="mt-3">New book</h2>
+        <%= form_with model: @book do |f| %>
+          <div class="form-group">
+            <label>Title</label>
+            <div class="fild_with_errors">
+              <input class=form-control "book_title" type="text" valu name="book[title]" id="book_title">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Opinion</label>
+            <div class="field_with_errors">
+              <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Create Book', class: "btn btn-sm btn-success" %>
+        </div>
+        <% end %>
+    </div>
+
+  
+    <div class="column col-md-8 offset-md-1">
+      <h2>Users</h2>
+        <!--ユーザー一覧-->
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+          <!--プロフィール画像-->
+            <td>
+              <%= image_tag @user.get_profile_image(100, 100) %>
+            </td>
+        　<!--ユーザー名-->
+            <td>
+              <%= user.name %>
+            </td>
+            <!--showページ(ユーザー)へのリンク-->
+            <td>
+              <%= link_to "Show", user_path(user) %>
+            <td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</main>
