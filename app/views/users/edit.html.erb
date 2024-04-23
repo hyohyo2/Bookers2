@@ -10,23 +10,19 @@
        <% end %>
       </ul>
     <% end %>
- 
+
     <%= form_with model: @user do |f| %>
-      <div class="form-group">
-        <label for="inputName">Name</label>
-        <input type="text" class="form-control name" id="inputName" placeholder:"" >
-      </div>
-      <div class="form-group">
-        <label for="inputImage">ProfileImage</label>
-        <input type="file" class="form-control-file" id="inputFile" accept: "image/*" >
-      </div>
-      <div class="form-group">
-        <label for="inputIntroduction">Introduction</label>
-          <textarea class="form-control introduction" id="introduction" placeholder:"" ></textarea>
+      <div class="field">
+        <p>Name</p>
+        <%= f.text_field :name, autofocus: true, class: "form-control", placeholder:"" %><br>
+        <p>ProfileImage</p>
+        <%= f.file_field :profile_image, accept: "image/*" %><br>
+        <p>Introduction</p>
+        <%= f.text_area :introduction, autofocus: true, class:"form-control", placeholder:"" %><br>
       </div>
         <!--f.text_area :introduction, autofocus: true, id:"inputIntroduction",placeholder:"" %><br>-->
       <div class="form-group">
-        <%= f.submit "Update User", class: "btn btn-sm btn-secondary" %>
+        <%= f.submit "Update User", class: "btn btn-md btn-secondary" %>
       </div>
     <% end %>
    </div>

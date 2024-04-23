@@ -14,7 +14,7 @@
       </ul>
     <% end %>
   </div>
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-md-3">
     <!--ユーザーの情報-->
       <h2>User info</h2>
@@ -22,7 +22,7 @@
         <!--ユーザー情報-->
         <tbody>
           <tr>
-            <%= image_tag @user.get_profile_image(100,100) %>
+          <%= image_tag @user.get_profile_image(100,100) %>
           </tr>
           <tr>
             <th>name</th>
@@ -42,29 +42,19 @@
   <!--投稿ページ-->
       <h2 class="mt-3">New book</h2>
         <%= form_with model: @book do |f| %>
-          <div class="form-group">
-            <label>Title</label>
-            <div class="fild_with_errors">
-              <input class=form-control "book_title" type="text" valu name="book[title]" id="book_title">
-            </div>
+          <div class="field">
+            Title
+              <%= f.text_field :title, class: "form-control"  %><br>
+            Opinion
+              <%= f.text_area :body, class: "form-control" %><br>
+            <%= f.submit 'Create Book', class: "btn btn-sm btn-success" %>
           </div>
-          <div class="form-group">
-            <label>Opinion</label>
-            <div class="field_with_errors">
-              <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-          <%= f.submit 'Create Book', class: "btn btn-sm btn-success" %>
-        </div>
-        <% end %>
+            <% end %>
     </div>
-
-  
     <div class="column col-md-8 offset-md-1">
       <h2>Users</h2>
         <!--ユーザー一覧-->
-      <table class="table table-hover table-inverse">
+      <table class="table">
         <thead>
           <tr>
             <th>image</th>
@@ -77,7 +67,7 @@
           <tr>
           <!--プロフィール画像-->
             <td>
-              <%= image_tag @user.get_profile_image(100, 100) %>
+              <%= image_tag user.get_profile_image(100, 100) %>
             </td>
         　<!--ユーザー名-->
             <td>
@@ -86,7 +76,7 @@
             <!--showページ(ユーザー)へのリンク-->
             <td>
               <%= link_to "Show", user_path(user) %>
-            <td>
+            </td>
           </tr>
           <% end %>
         </tbody>

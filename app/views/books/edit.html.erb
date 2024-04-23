@@ -10,19 +10,14 @@
             <% end %>
           </ul>
       <% end %>
-      
       <%= form_with model: @book do |f| %>
-        <div class="form-group">
-          <label for="inputtitle">Title</label>
-          <input type="text" class="form-control inputtitle" id="inputtitle">
+        <div class="field">
+          Title
+           <%= f.text_field :title, autofocus: true, class: "form-control", placeholder:""%><br>
+          Opinion
+          <%=f.text_area :body, autofocus: true, class:"form-control", placeholder:"" %><br>
         </div>
-             <!--f.text_field :title, autofocus: true, id:"inputTitle", placeholder:""%><br>-->
-        <div class="form-group">
-          <label for="inputopinion">Opinion</label>
-          <textarea class="form-control opinion" id="inputopinion"></textarea>
-        </div>
-             <!--f.text_field :body, autofocus: true, id:"inputBody", placeholder:"" %><br>-->
-        <div class="form-group">
+        <div>
           <%= f.submit 'Update Book', class: "btn btn-sm btn-success" %>
         </div>
       <% end %>
