@@ -1,6 +1,6 @@
 <div class='container '>
   <div class="row">
-    <div class= "col-9  mx-auto">
+    <div class= "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mt-3 mx-auto">
       <h2>Editing Book</h2>
       <% if @book.errors.any? %>
         <h4><%= @book.errors.count %>error prohibited this obj from being saved:</h4>
@@ -19,7 +19,7 @@
              <!--f.text_field :title, autofocus: true, id:"inputTitle", placeholder:""%><br>-->
         <div class="form-group">
           <label for="inputopinion">Opinion</label>
-          <textarea class="form-control opinion" id="inputopinion">
+          <textarea class="form-control opinion" id="inputopinion"></textarea>
         </div>
              <!--f.text_field :body, autofocus: true, id:"inputBody", placeholder:"" %><br>-->
         <div class="form-group">
